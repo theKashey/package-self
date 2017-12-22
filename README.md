@@ -1,5 +1,7 @@
 # package-self
+
 [![NPM](https://nodei.co/npm/package-self.png?downloads=true&stars=true)](https://nodei.co/npm/package-self/)
+
 The common mistake for any library is quite simple, but hard to spot.
 
 > As a library creator you are testing you library __NOT__ as a library. 
@@ -43,7 +45,10 @@ Not all tests could and should be run using the `real` bundle code.
 But you shall test your public API using the code, you will ship to a customer, not local sources.
 
 ### PS
-As we test this library 
+As we test this library.
+
+PPS: Inspired by [React tooling bloppost](https://reactjs.org/blog/2017/12/15/improving-the-repository-infrastructure.html#simulating-package-publishing),
+also some code has origins from that article. 
 
 # Licence
 MIT
