@@ -1,0 +1,36 @@
+{
+  "name": "package-self",
+  "version": "1.0.0",
+  "description": "Bundle and move the current package into node_modules",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./bin/package-self",
+    "test:lib": "package-self",
+    "test:build": "build-and-package-self"
+  },
+  "bin": {
+    "package-self": "./bin/package-self",
+    "build-and-package-self": "./bin/build-and-package-self"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theKashey/package-self.git"
+  },
+  "keywords": [
+    "testing",
+    "npm",
+    "bundle",
+    "pack",
+    "library"
+  ],
+  "author": "Anton Korzunov <thekashey@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theKashey/package-self/issues"
+  },
+  "homepage": "https://github.com/theKashey/package-self#readme",
+  "dependencies": {
+    "package-self": "file:package-self-1.0.0.tgz",
+    "rimraf": "^2.6.2"
+  }
+}
