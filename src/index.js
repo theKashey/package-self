@@ -34,7 +34,7 @@ const packProject = async () => {
 
   await asyncRimRaf(`${CDW}/node_modules/${name}`);
   const tgzName = (await asyncExecuteCommand(`npm pack`)).trim();
-  (await asyncExecuteCommand(`npm install ./${tgzName} --force`));
+  (await asyncExecuteCommand(`npm install ./${tgzName} --force --no-save`));
 
   unlinkSync(tgzName);
 };
