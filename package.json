@@ -30,7 +30,6 @@
   },
   "homepage": "https://github.com/theKashey/package-self#readme",
   "dependencies": {
-    "package-self": "file:package-self-1.0.0.tgz",
     "rimraf": "^2.6.2"
   }
 }
