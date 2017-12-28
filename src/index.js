@@ -28,13 +28,20 @@ function asyncRimRaf(filepath) {
   );
 }
 
+const lastLine = (file) => {
+  const lines = file.split('\n');
+  return lines.pop();
+};
+
 const packProject = async () => {
   const CDW = process.cwd();
   const {name} = require(CDW + "/package.json");
 
   await asyncRimRaf(`${CDW}/node_modules/${name}`);
-  const tgzName = (await asyncExecuteCommand(`npm pack`)).trim();
-  (await asyncExecuteCommand(`npm install ./${tgzName} --force --no-save`));
+  console.log('packing...');
+  const tgzName = lastLine((await asyncExecuteCommand(`npm pack`)).trim());
+  console.log(`unpacking... ${tgzName}`);
+  (await asyncExecuteCommand(`npm install ./${tgzName} --no-save --force`));
 
   unlinkSync(tgzName);
 };
