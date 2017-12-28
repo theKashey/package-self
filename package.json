@@ -1,6 +1,6 @@
 {
   "name": "package-self",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Bundle and move the current package into node_modules",
   "main": "src/index.js",
   "scripts": {
