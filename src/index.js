@@ -59,7 +59,7 @@ const packProject = async () => {
       name: 'packaging-' + name
     }));
     console.log(`unpacking... ${tgzName}`);
-    (await asyncExecuteCommand(`npm install ./${tgzName} --no-save`));
+    (await asyncExecuteCommand(`yarn add ./${tgzName}`));
   } finally {
     restorePackage();
   }
