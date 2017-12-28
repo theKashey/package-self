@@ -22,7 +22,6 @@ This includes:
 npm install package-self
 
 npm run package-self
-npm run build-and-package-self
 ```    
 This will install a package as local dependency, next you can use in in your test
 

@@ -1,8 +1,10 @@
 'use strict';
-const {unlinkSync} = require('fs');
-
+const {unlinkSync, writeFileSync, readFileSync} = require('fs');
 const rimraf = require('rimraf');
 const exec = require('child_process').exec;
+
+const CDW = process.cwd();
+const packageFile = CDW + "/package.json";
 
 function asyncExecuteCommand(command) {
   return new Promise((resolve, reject) =>
@@ -33,26 +35,43 @@ const lastLine = (file) => {
   return lines.pop();
 };
 
+let packageJson = null;
+const restorePackage = () => {
+  if (packageJson) {
+    console.log('unmasking package.json');
+    writeFileSync(packageFile, packageJson);
+    packageJson = null;
+  }
+}
+
 const packProject = async () => {
-  const CDW = process.cwd();
-  const {name} = require(CDW + "/package.json");
+  packageJson = readFileSync(packageFile);
+  const packageData = require(packageFile);
+  const {name} = packageData;
 
   await asyncRimRaf(`${CDW}/node_modules/${name}`);
   console.log('packing...');
   const tgzName = lastLine((await asyncExecuteCommand(`npm pack`)).trim());
-  console.log(`unpacking... ${tgzName}`);
-  (await asyncExecuteCommand(`npm install ./${tgzName} --no-save --force`));
+  console.log('masking package.json');
+  try {
+    writeFileSync(packageFile, JSON.stringify({
+      ...packageData,
+      name: 'packaging-' + name
+    }));
+    console.log(`unpacking... ${tgzName}`);
+    (await asyncExecuteCommand(`npm install ./${tgzName} --no-save`));
+  } finally {
+    restorePackage();
+  }
 
   unlinkSync(tgzName);
 };
 
-const buildProject = async () => {
-  await asyncExecuteCommand("npm run prepublish");
-}
+process.on('SIGINT', restorePackage);
+process.on('SIGTERM', restorePackage);
 
 console.log(process.cwd());
 
 module.exports = {
-  packProject,
-  buildProject
+  packProject
 };

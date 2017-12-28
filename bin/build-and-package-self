@@ -1,6 +1,0 @@
-#!/usr/bin/env node
-
-var ps = require('../src/index');
-ps
-  .buildProject()
-  .then(ps.packProject);
