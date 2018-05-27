@@ -1,6 +1,6 @@
 # package-self
 
-[![NPM](https://nodei.co/npm/package-self.png?downloads=true&stars=true)](https://nodei.co/npm/package-self/)
+[![NPM](https://nodei.co/npm/package-self.png?downloads=true&stars=true)](https://nodei.co/npm/package-self/) [![Greenkeeper badge](https://badges.greenkeeper.io/theKashey/package-self.svg)](https://greenkeeper.io/)
 
 The common mistake for any library is quite simple, but hard to spot.
 
