@@ -37,7 +37,7 @@ You should not test yourself in as your self.
 import myFunction from 'myLibrary'
 declare('lets test it!'....)
 ```
-Not you can test yourself as your final user will use you.
+Now you can test yourself as your final user will use you.
 
 ### Hint
 Not all tests could and should be run using the `real` bundle code.
